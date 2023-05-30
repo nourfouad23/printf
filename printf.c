@@ -3,6 +3,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 /**
  * _printf - 2 dimen arr func
@@ -12,13 +13,13 @@
 
 int _printf(const char *format, ...)
 {
-int i;
-int result = 0;
+int result;
 
-for (i = 0; format[i] != '\0'; i++)
-{
-putchar(format[i]);
-result += 1; 
-}
+va_list args;
+va_start(args, format);
+result = vprintf(format, args);
+ 
+va_end(args);
+    
 return (result);
 }
