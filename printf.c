@@ -1,7 +1,8 @@
 #include <limits.h>
 #include <stdio.h>
 #include "main.h"
-
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * _printf - 2 dimen arr func
@@ -11,12 +12,13 @@
 
 int _printf(const char *format, ...)
 {
-int i, result;
+int i;
+int result = 0;
 
 for (i = 0; format[i] != '\0'; i++)
 {
 putchar(format[i]);
-result =  malloc((format[i] * sizeof(char *)) + 1);
+result += 1; 
 }
-return result;
+return (result);
 }
