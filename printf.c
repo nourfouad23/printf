@@ -37,11 +37,10 @@ result += printf("%%%c", format[i]);
 }
 else
 {
-putchar(format[i]);
-result++;
-}
-}
 result = vprintf(format, args);
+}
+}
+
 va_end(args);
 
 return (result);
