@@ -37,7 +37,8 @@ result += printf("%%%c", format[i]);
 }
 else
 {
-result = vprintf(format, args);
+putchar(format[i]);
+result++;
 }
 }
 
