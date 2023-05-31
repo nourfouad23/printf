@@ -13,35 +13,13 @@
 
 int _printf(const char *format, ...)
 {
-int result = 0;
-int i, input;
+int result;
 
 va_list args;
 va_start(args, format);
-
-
-for (i = 0; format[i] != '\0'; i++)
-{
-if (format[i] == '%')
-{
-i++;
-if (format[i] == 'd' || format[i] == 'i')
-{
-input = va_arg(args, int);
-result += printf("%d", input);
-}
-else
-{
-result += printf("%%%c", format[i]);
-}
-}
-else
-{
-putchar(format[i]);
-result++;
-}
-}
+result = vprintf(format, args);
+ 
 va_end(args);
-
+    
 return (result);
 }
