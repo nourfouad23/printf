@@ -14,11 +14,11 @@
 int _printf(const char *format, ...)
 {
 int result = 0;
-int i, input;
+int i;
 int integer;
 char character;
 double decimal;
-char *string;
+char *arrayname;
 
 va_list args;
 va_start(args, format);
@@ -51,13 +51,13 @@ break;
 }
 case 's':
 {
-*string = va_arg(args, char*);
-result += printf("%s", string);
+arrayname = va_arg(args, char*);
+result += printf("%s", arrayname);
 break;
 }
 case 'c':
 {
-character = va_arg(args, char);
+character = va_arg(args, int);
 result += printf("%c", character);
 break;
 }
