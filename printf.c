@@ -70,7 +70,7 @@ break;
 case 'b':
 {
 value = va_arg(args, unsigned int);
-for (j = ((sizeof(unsigned int) * 8) - 1); j >= 0; --j)
+for (j = 6; j >= 0; j--)
 {
 putchar((value & (1 << j)) ? '1' : '0');
 }
