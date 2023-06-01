@@ -19,6 +19,7 @@ int integer;
 char character;
 double decimal;
 char *arrayname;
+unsigned int value;
 
 va_list args;
 va_start(args, format);
@@ -59,6 +60,42 @@ case 'c':
 {
 character = va_arg(args, int);
 result += printf("%c", character);
+break;
+}
+case 'u':
+{
+value = va_arg(args, unsigned int);
+for (i = sizeof(unsigned int) * 8 - 1; i >= 0; --i)
+{
+putchar((value & (1 << i)) ? '1' : '0');
+}
+break;
+}
+case 'b':
+{
+value = va_arg(args, unsigned int);
+for (i = sizeof(unsigned int) * 8 - 1; i >= 0; --i)
+{
+putchar((value & (1 << i)) ? '1' : '0');
+}
+break;
+}
+case 'o':
+{
+value = va_arg(args, unsigned int);
+printf("%o", value);
+break;
+}
+case 'x':
+{
+value = va_arg(args, unsigned int);
+printf("%x", value);
+break;
+}
+case 'X':
+{
+value = va_arg(args, unsigned int);
+printf("%X", value);
 break;
 }
 default:
