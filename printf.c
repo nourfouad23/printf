@@ -15,6 +15,10 @@ int _printf(const char *format, ...)
 {
 int result = 0;
 int i, input;
+int integer;
+char character;
+double decimal;
+char *string;
 
 va_list args;
 va_start(args, format);
@@ -25,14 +29,43 @@ for (i = 0; format[i] != '\0'; i++)
 if (format[i] == '%')
 {
 i++;
-if (format[i] == 'd' || format[i] == 'i')
+switch (format[i])
 {
-input = va_arg(args, int);
-result += printf("%d", input);
+case 'd':
+{
+integer = va_arg(args, int);
+result += printf("%d", integer);
+break;
 }
-else
+case 'i':
+{
+integer = va_arg(args, int);
+result += printf("%d", integer);
+break;
+}
+case 'f':
+{
+decimal = va_arg(args, double);
+result += printf("%f", decimal);
+break;
+}
+case 's':
+{
+*string = va_arg(args, char*);
+result += printf("%s", string);
+break;
+}
+case 'c':
+{
+character = va_arg(args, char);
+result += printf("%c", character);
+break;
+}
+default:
 {
 result += printf("%%%c", format[i]);
+break;
+}
 }
 }
 else
