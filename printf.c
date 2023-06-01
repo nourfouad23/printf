@@ -14,7 +14,7 @@
 int _printf(const char *format, ...)
 {
 int result = 0;
-int i;
+int i, j;
 int integer;
 char character;
 double decimal;
@@ -64,20 +64,46 @@ break;
 }
 case 'u':
 {
-value = va_arg(args, unsigned int);
-for (i = sizeof(unsigned int) * 8 - 1; i >= 0; --i)
-{
-putchar((value & (1 << i)) ? '1' : '0');
-}
+printf("%u", va_arg(args, unsigned int));
 break;
 }
 case 'b':
 {
 value = va_arg(args, unsigned int);
-for (i = sizeof(unsigned int) * 8 - 1; i >= 0; --i)
+for (j = ((sizeof(unsigned int) * 8) - 1); j >= 0; --j)
 {
-putchar((value & (1 << i)) ? '1' : '0');
+putchar((value & (1 << j)) ? '1' : '0');
 }
+break;
+}
+case 'p':
+{
+printf("%p", va_arg(args, void *));
+break;
+}
+case '+':
+{
+printf("+%d", va_arg(args, int));
+break;
+}
+case ' ':
+{
+printf(" %d", va_arg(args, int));
+break;
+}
+case '#':
+{
+printf("#%d", va_arg(args, int));
+break;
+}
+case 'l':
+{
+printf("%ld", va_arg(args, long));
+break;
+}
+case 'h':
+{
+printf("%hd", va_arg(args, int));
 break;
 }
 case 'o':
