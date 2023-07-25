@@ -124,12 +124,6 @@ value = va_arg(args, unsigned int);
 printf("%X", value);
 break;
 }
-case 'R':
-{
-value = va_arg(args, char*);
-printf("%R", value);
-break;
-}
 default:
 {
 result += printf("%%%c", format[i]);
