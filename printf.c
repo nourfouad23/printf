@@ -148,7 +148,6 @@ putchar(str[i]);
 count++;
 }
 }
-break;
 }
 default:
 {
