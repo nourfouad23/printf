@@ -14,12 +14,16 @@
 int _printf(const char *format, ...)
 {
 int result = 0;
-int i, j;
+int i, j, count = 0, k = 0;
 int integer;
 char character;
 double decimal;
 char *arrayname;
 unsigned int value;
+
+char *str = va_arg(args, char*);
+char alphaArr[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+char betaArr[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 va_list args;
 va_start(args, format);
@@ -122,6 +126,28 @@ case 'X':
 {
 value = va_arg(args, unsigned int);
 printf("%X", value);
+break;
+}
+case 'R':
+{
+for (i = 0; str[i]; i++)
+{
+k = 0;
+for (j = 0; alphaArr[j] && !k; j++)
+{
+if (str[i] == alphaArr[j])
+{
+putchar(betaArr[j]);
+count++;
+k = 1;
+}
+}
+if (!k)
+{
+putchar(str[i]);
+count++;
+}
+}
 break;
 }
 default:
